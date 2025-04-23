@@ -1,11 +1,26 @@
-import "bootstrap";
-import "./style.css";
+const excusasPrincipales = [
+  "Se me olvidó",
+  "No pude porque",
+  "Tuve un problema con",
+  "Me retrasé debido a",
+  "No lo hice porque"
+];
 
+const excusasSecundarias = [
+  "el tráfico estaba terrible.",
+  "mi perro se escapó.",
+  "me quedé sin batería en el teléfono.",
+  "estaba enfermo.",
+  "tenía una cita importante."
+];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+function generarExcusa() {
+  const principal = excusasPrincipales[Math.floor(Math.random() * excusasPrincipales.length)];
+  const secundaria = excusasSecundarias[Math.floor(Math.random() * excusasSecundarias.length)];
+  return `${principal} ${secundaria}`;
+}
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+document.getElementById("generar").addEventListener("click", function() {
+  const excusa = generarExcusa();
+  document.getElementById("excusa").textContent = excusa;
+});
